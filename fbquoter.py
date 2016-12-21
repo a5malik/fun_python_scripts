@@ -33,6 +33,7 @@ content = urllib2.urlopen(url).read()
 soup = BeautifulSoup(content, 'html.parser')
 quotes = soup.find_all("div", class_="quote")
 
+#change pthis ath to chromedriver
 browser = webdriver.Chrome("C:\\Users\\footb\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
 browser.get("http://www.facebook.com")
