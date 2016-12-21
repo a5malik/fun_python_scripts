@@ -3,6 +3,8 @@
 Created on Tue Dec 20 16:07:30 2016
 
 @author: footb
+
+easy command line actions for Bluff Avenue client.
 """
 
 import win32api,time,win32con
