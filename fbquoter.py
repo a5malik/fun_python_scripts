@@ -3,6 +3,9 @@
 Created on Tue Dec 13 20:44:09 2016
 
 @author: footb
+
+logs into fb and randomly messages fight club quotes from IMDB.(or any IMDB quotes url)
+
 """
 
 from selenium import webdriver
@@ -16,43 +19,14 @@ import urllib2
 import re
 import random
 import argparse
-mypass = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-n', dest='name', default="Steven Yin")
 
 args = parser.parse_args()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+myemail = ""
+mypass = ""
 
 url="http://www.imdb.com/title/tt0137523/quotes"
 content = urllib2.urlopen(url).read()
@@ -64,7 +38,7 @@ browser = webdriver.Chrome("C:\\Users\\footb\\Downloads\\chromedriver_win32\\chr
 browser.get("http://www.facebook.com")
 
 email = browser.find_element_by_id("email");
-email.send_keys("footballfreek_me@hotmail.com", Keys.TAB)
+email.send_keys(myemail, Keys.TAB)
 
 password = browser.find_element_by_id("pass")
 password.send_keys(mypass, Keys.RETURN)
