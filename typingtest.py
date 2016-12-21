@@ -3,6 +3,8 @@
 Created on Wed Dec 14 13:01:16 2016
 
 @author: footb
+
+Reads and enters text on the typing test page.
 """
 
 from selenium import webdriver
@@ -21,7 +23,5 @@ cur = browser.find_element_by_class_name("currentword").text
 start_time = time.time()
 while(time.time()-start_time <= 60):
     inp.send_keys(cur)
-    #for i in cur:
-    #    inp.send_keys(i)
     inp.send_keys(Keys.SPACE)
     cur = browser.find_element_by_class_name("currentword").text
