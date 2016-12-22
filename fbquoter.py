@@ -25,6 +25,7 @@ parser.add_argument('-n', dest='name', default="Steven Yin")
 
 args = parser.parse_args()
 
+#change password/email
 myemail = ""
 mypass = ""
 
@@ -33,7 +34,7 @@ content = urllib2.urlopen(url).read()
 soup = BeautifulSoup(content, 'html.parser')
 quotes = soup.find_all("div", class_="quote")
 
-#change pthis ath to chromedriver
+#change this path to your own chromedriver path
 browser = webdriver.Chrome("C:\\Users\\footb\\Downloads\\chromedriver_win32\\chromedriver.exe")
 
 browser.get("http://www.facebook.com")
@@ -58,7 +59,7 @@ url = name.get_attribute("href")
 browser.get(url)
 for i in range(1):
     quote = random.choice(quotes)
-    browser.find_element_by_id("js_n").send_keys("Random IMDB Fight club quote by Python script", Keys.RETURN)
+    browser.find_element_by_id("js_n").send_keys("Random IMDB quote by Python script", Keys.RETURN)
     browser.find_element_by_id("js_n").send_keys(quote.contents[0].contents[1].contents[1].string, Keys.RETURN)
     browser.find_element_by_id("js_n").send_keys(quote.contents[0].contents[1].contents[2][2:], Keys.RETURN)
     browser.find_element_by_id("js_n").send_keys("XXXX", Keys.RETURN)
