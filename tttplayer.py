@@ -3,6 +3,9 @@
 Created on Mon Dec 26 16:03:45 2016
 
 @author: footb
+
+Uses minimax with a/b pruning to play Tic Tac Toe on https://playtictactoe.org/
+Uses snapshots to recognize x's and o's
 """
 
 
@@ -225,7 +228,7 @@ for y in range(3):
         im = ImageOps.grayscale(ImageGrab.grab(box))
         a = array(im.getcolors())
         a = a.sum()
-        sums.append(a)
+        sums.append(a/1000)
         #screenGrab(box)
         time.sleep(0.5)
 
@@ -242,7 +245,7 @@ board = Board(state)
 board.pnt()
 player = Player.me
 
-for i in range(9):
+while(True):
     bestScore, bestMove, bestDepth = minimax(board, player, 10, 0, -1, 1)
     if bestMove == None:
         bestScore, bestMove, bestDepth = minimax(board, player, 2, 0, -1, 1)
@@ -257,17 +260,20 @@ for i in range(9):
     mousePos((0,0))
     #Get Current State
     sums= []
-    
+    time.sleep(1)
     for y in range(3):
         for x in range(3):
             box = (STARTX+CELLW*x+10, STARTY+CELLH*y+10, STARTX+CELLW*x+CELLW-10, STARTY+CELLH*y+CELLH-10)
             im = ImageOps.grayscale(ImageGrab.grab(box))
             a = array(im.getcolors())
             a = a.sum()
-            sums.append(a)
+            sums.append(a/1000)
             #screenGrab(box)
             time.sleep(0.5)
+    print sums
     shapenum = list(set(sums))
+    if len(shapenum) == 2: 
+        break
     shapenum.sort()
     state = [shapenum.index(i) for i in sums]
     board = Board(state)
